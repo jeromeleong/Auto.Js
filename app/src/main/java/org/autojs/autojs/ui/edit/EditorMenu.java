@@ -14,14 +14,15 @@ import com.stardust.pio.PFiles;
 import com.stardust.util.ClipboardUtil;
 import com.stardust.util.IntentUtil;
 
+import org.autojs.autojs.Pref;
 import org.autojs.autojs.R;
 import org.autojs.autojs.model.indices.AndroidClass;
 import org.autojs.autojs.model.indices.ClassSearchingItem;
 import org.autojs.autojs.theme.dialog.ThemeColorMaterialDialogBuilder;
+import org.autojs.autojs.ui.build.BuildActivity;
 import org.autojs.autojs.ui.common.NotAskAgainDialog;
 import org.autojs.autojs.ui.edit.editor.CodeEditor;
-import org.autojs.autojs.ui.log.LogActivityKt;
-import org.autojs.autojs.ui.build.BuildActivity;
+import org.autojs.autojs.ui.log.LogActivity_;
 
 import java.util.Locale;
 
@@ -53,6 +54,14 @@ public class EditorMenu {
             case R.id.action_force_stop:
                 forceStop();
                 return true;
+            case R.id.switch_line_wrap:
+                Pref.setLineWrap(!Pref.getLineWrap());
+                if (Pref.getLineWrap()) {
+                    Toast.makeText(mContext, "已打开编辑器自动换行，重启编辑器后生效！", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(mContext, "已关闭编辑器自动换行，重启编辑器后生效！", Toast.LENGTH_LONG).show();
+                }
+                break;
             default:
                 if (onEditOptionsSelected(item)) {
                     return true;
@@ -289,7 +298,7 @@ public class EditorMenu {
 
 
     private void showLog() {
-        LogActivityKt.start(mContext);
+        LogActivity_.intent(mContext).start();
     }
 
     private void showConsole() {
