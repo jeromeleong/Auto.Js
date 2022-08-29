@@ -253,7 +253,7 @@ module.exports = function (runtime, global) {
         return cmd;
     }
 
-    
+
 
     global.__asGlobal__(app, ['launchPackage', 'launch', 'launchApp', 'getPackageName', 'getAppName', 'openAppSetting']);
 
