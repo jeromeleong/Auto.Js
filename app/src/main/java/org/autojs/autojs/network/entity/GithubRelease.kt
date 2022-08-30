@@ -51,7 +51,7 @@ data class GithubReleaseInfo(
  * @return Returns null if targetCommitish is prerelease or not "dev-test"
  */
 fun GithubReleaseInfo.isLatestVersion(anotherReleaseInfo: GithubReleaseInfo): Boolean? {
-    if (targetCommitish != "dev-test" || prerelease) return null
+    if (targetCommitish != "master" || prerelease) return null
     return Instant.parse(createdAt).toDateTime().millis >=
             Instant.parse(anotherReleaseInfo.createdAt).toDateTime().millis
 }
