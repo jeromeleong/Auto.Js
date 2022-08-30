@@ -115,7 +115,7 @@ fun DrawerPage() {
             TextButton(onClick = {
                 IntentUtil.browse(
                     context,
-                    "https://github.com/LZX284/Auto.Js"
+                    "https://github.com/jeromeleong/Auto.Js"
                 )
             }) {
                 Text(text = stringResource(R.string.text_project_link))
@@ -123,7 +123,7 @@ fun DrawerPage() {
             TextButton(onClick = {
                 IntentUtil.browse(
                     context,
-                    "https://github.com/LZX284/Auto.Js/releases"
+                    "https://github.com/jeromeleong/Auto.Js/releases"
                 )
             }) {
                 Text(text = stringResource(R.string.text_app_download_link))
@@ -131,7 +131,7 @@ fun DrawerPage() {
             TextButton(onClick = {
                 IntentUtil.browse(
                     context,
-                    "https://github.com/LZX284/Auto.Js/issues"
+                    "https://github.com/jeromeleong/Auto.Js/issues"
                 )
             }) {
                 Text(text = stringResource(R.string.text_issue_report))

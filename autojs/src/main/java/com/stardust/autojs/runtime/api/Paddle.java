@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.baidu.paddle.lite.demo.detection.bean.DetectionResult;
 import com.baidu.paddle.lite.demo.ocr.OcrResult;
 import com.baidu.paddle.lite.demo.ocr.Predictor;
 import com.stardust.app.GlobalAppContext;
@@ -12,23 +13,26 @@ import com.stardust.autojs.core.image.ImageWrapper;
 import java.util.Collections;
 import java.util.List;
 
+import com.baidu.paddle.lite.demo.detection.DetectionPredictor;
+
 public class Paddle {
-    private Predictor mPredictor = new Predictor();
+    private Predictor mOcrPredictor = new Predictor();
+    private DetectionPredictor mDetectionPredictor = new DetectionPredictor();
 
     public boolean initOcr(Context context) {
-        return mPredictor.init(context);
+        return mOcrPredictor.init(context);
     }
 
     public boolean initOcr(Context context, int cpuThreadNum) {
-        return mPredictor.init(context, cpuThreadNum);
+        return mOcrPredictor.init(context, cpuThreadNum);
     }
 
     public boolean initOcr(Context context, int cpuThreadNum, Boolean useSlim, Boolean useOpencl) {
-        return mPredictor.init(context, cpuThreadNum, useSlim, useOpencl);
+        return mOcrPredictor.init(context, cpuThreadNum, useSlim, useOpencl);
     }
 
     public boolean initOcr(Context context, int cpuThreadNum, String myModelPath, Boolean useOpencl) {
-        return mPredictor.init(context, cpuThreadNum, myModelPath, useOpencl);
+        return mOcrPredictor.init(context, cpuThreadNum, myModelPath, useOpencl);
     }
 
     public List<OcrResult> ocr(ImageWrapper image, int cpuThreadNum, String myModelPath, Boolean useOpencl,
@@ -40,10 +44,10 @@ public class Paddle {
         if (bitmap == null || bitmap.isRecycled()) {
             return Collections.emptyList();
         }
-        if (!mPredictor.isLoaded()) {
-            mPredictor.init(GlobalAppContext.get(), cpuThreadNum, myModelPath, useOpencl, detLongSize, scoreThreshold);
+        if (!mOcrPredictor.isLoaded()) {
+            mOcrPredictor.init(GlobalAppContext.get(), cpuThreadNum, myModelPath, useOpencl, detLongSize, scoreThreshold);
         }
-        return mPredictor.ocr(bitmap);
+        return mOcrPredictor.ocr(bitmap);
     }
 
     public List<OcrResult> ocr(ImageWrapper image, int cpuThreadNum, Boolean useSlim, Boolean useOpencl,
@@ -55,10 +59,10 @@ public class Paddle {
         if (bitmap == null || bitmap.isRecycled()) {
             return Collections.emptyList();
         }
-        if (!mPredictor.isLoaded()) {
-            mPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl, detLongSize, scoreThreshold);
+        if (!mOcrPredictor.isLoaded()) {
+            mOcrPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl, detLongSize, scoreThreshold);
         }
-        return mPredictor.ocr(bitmap);
+        return mOcrPredictor.ocr(bitmap);
     }
 
     public List<OcrResult> ocr(ImageWrapper image, int cpuThreadNum, Boolean useSlim, Boolean useOpencl) {
@@ -69,10 +73,10 @@ public class Paddle {
         if (bitmap == null || bitmap.isRecycled()) {
             return Collections.emptyList();
         }
-        if (!mPredictor.isLoaded()) {
-            mPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl);
+        if (!mOcrPredictor.isLoaded()) {
+            mOcrPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl);
         }
-        return mPredictor.ocr(bitmap);
+        return mOcrPredictor.ocr(bitmap);
     }
 
     public List<OcrResult> ocr(ImageWrapper image, int cpuThreadNum, String myModelPath, Boolean useOpencl) {
@@ -83,10 +87,10 @@ public class Paddle {
         if (bitmap == null || bitmap.isRecycled()) {
             return Collections.emptyList();
         }
-        if (!mPredictor.isLoaded()) {
-            mPredictor.init(GlobalAppContext.get(), cpuThreadNum, myModelPath, useOpencl);
+        if (!mOcrPredictor.isLoaded()) {
+            mOcrPredictor.init(GlobalAppContext.get(), cpuThreadNum, myModelPath, useOpencl);
         }
-        return mPredictor.ocr(bitmap);
+        return mOcrPredictor.ocr(bitmap);
     }
 
     public List<OcrResult> ocr(ImageWrapper image, int cpuThreadNum, String myModelPath) {
@@ -98,8 +102,8 @@ public class Paddle {
     }
 
     public String[] ocrText(ImageWrapper image, int cpuThreadNum, Boolean useSlim, Boolean useOpencl) {
-        if (!mPredictor.isLoaded()) {
-            mPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl);
+        if (!mOcrPredictor.isLoaded()) {
+            mOcrPredictor.init(GlobalAppContext.get(), cpuThreadNum, useSlim, useOpencl);
         }
         List<OcrResult> words_result = ocr(image, cpuThreadNum, useSlim, useOpencl);
         String[] outputResult = new String[words_result.size()];
@@ -137,10 +141,119 @@ public class Paddle {
     }
 
     public void releaseOcr() {
-        mPredictor.releaseModel();
+        mOcrPredictor.releaseModel();
     }
 
     public void release() {
-        mPredictor.releaseModel();
+        mOcrPredictor.releaseModel();
     }
+
+    public boolean initOd() {
+        try {
+            mDetectionPredictor.init(GlobalAppContext.get(), "", "", new long[]{1, 3, 320, 320}, 4, 0.5f);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean initOd(int cpuThreadNum) {
+        try {
+            mDetectionPredictor.init(GlobalAppContext.get(), "", "", new long[]{1, 3, 320, 320}, cpuThreadNum, 0.5f);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean initOcr(String modelPath, String LabelPath) {
+        try {
+            mDetectionPredictor.init(GlobalAppContext.get(), modelPath, LabelPath, new long[]{1, 3, 320, 320}, 4, 0.5f);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean initOcr(String modelPath, String LabelPath, int cpuThreadNum) {
+        try {
+            mDetectionPredictor.init(GlobalAppContext.get(), modelPath, LabelPath, new long[]{1, 3, 320, 320}, cpuThreadNum, 0.5f);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public List<DetectionResult> detection(ImageWrapper image, String modelPath, String LabelPath) {
+        if (image == null) {
+            return Collections.emptyList();
+        }
+        Bitmap bitmap = image.getBitmap();
+        if (bitmap == null || bitmap.isRecycled()) {
+            return Collections.emptyList();
+        }
+        if (!mDetectionPredictor.isLoaded()) {
+            try {
+                mDetectionPredictor.init(GlobalAppContext.get(), modelPath, LabelPath, new long[]{1, 3, 320, 320}, 4, 0.5f);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return mDetectionPredictor.predictImage(bitmap);
+    }
+
+    public List<DetectionResult> detection(ImageWrapper image,String modelPath, String LabelPath, Integer CPUTreads) {
+        if (image == null) {
+            return Collections.emptyList();
+        }
+        Bitmap bitmap = image.getBitmap();
+        if (bitmap == null || bitmap.isRecycled()) {
+            return Collections.emptyList();
+        }
+        if (!mDetectionPredictor.isLoaded()) {
+            try {
+                mDetectionPredictor.init(GlobalAppContext.get(), modelPath, LabelPath, new long[]{1, 3, 320, 320}, CPUTreads, 0.5f);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return mDetectionPredictor.predictImage(bitmap);
+    }
+
+    public List<DetectionResult> detection(ImageWrapper image, Integer CPUTreads) {
+        if (image == null) {
+            return Collections.emptyList();
+        }
+        Bitmap bitmap = image.getBitmap();
+        if (bitmap == null || bitmap.isRecycled()) {
+            return Collections.emptyList();
+        }
+        if (!mDetectionPredictor.isLoaded()) {
+            try {
+                mDetectionPredictor.init(GlobalAppContext.get(), "", "", new long[]{1, 3, 320, 320}, CPUTreads, 0.5f);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return mDetectionPredictor.predictImage(bitmap);
+    }
+
+    public List<DetectionResult> detection(ImageWrapper image) {
+        if (image == null) {
+            return Collections.emptyList();
+        }
+        Bitmap bitmap = image.getBitmap();
+        if (bitmap == null || bitmap.isRecycled()) {
+            return Collections.emptyList();
+        }
+        if (!mDetectionPredictor.isLoaded()) {
+            try {
+                mDetectionPredictor.init(GlobalAppContext.get(), "", "", new long[]{1, 3, 320, 320}, 4, 0.5f);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return mDetectionPredictor.predictImage(bitmap);
+    }
+
 }

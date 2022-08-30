@@ -77,9 +77,11 @@ clickButtonWindow.captureAndOcr.click(function () {
     clickButtonWindow.setPosition(device.width, device.height)
   })
   setTimeout(() => {
-    captureAndOcr()
-    ui.run(function () {
-      clickButtonWindow.setPosition(device.width / 2 - ~~(clickButtonWindow.getWidth() / 2), device.height * 0.65)
+    threads.start(()=>{
+      captureAndOcr()
+      ui.run(function () {
+        clickButtonWindow.setPosition(device.width / 2 - ~~(clickButtonWindow.getWidth() / 2), device.height * 0.65)
+      })
     })
   }, 500)
 })
@@ -106,8 +108,6 @@ window.canvas.on('draw', function (canvas) {
   if (result && result.length > 0) {
     for (let i = 0; i < result.length; i++) {
       let ocrResult = result[i]
-      log(ocrResult);
-      log("   |  ");
       drawRectAndText(ocrResult.words + ' #信心:' + ocrResult.confidence.toFixed(2), ocrResult.bounds, '#00ff00', canvas, paint);
     }
   }
@@ -121,7 +121,7 @@ events.on('exit', () => {
   img && img.recycle()
   // 撤销监听
   window.canvas.removeAllListeners()
-  
+
 })
 
 /**

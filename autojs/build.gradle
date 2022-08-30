@@ -71,6 +71,7 @@ dependencies {
     api project(path: ':LocalRepo:p7zip')
     api project(path: ':LocalRepo:OpenCV')
     api project(path: ':LocalRepo:PaddleOCR4Android')
+    api project(path: ':LocalRepo:PaddleDetection')
     // libs
     api fileTree(dir: '../app/libs', include: ['dx.jar', 'rhino-1.7.14-jdk7.jar'])
     // mlkit

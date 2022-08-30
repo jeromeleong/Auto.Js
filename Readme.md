@@ -1,8 +1,8 @@
 # Auto.Js+
 
-## 简介
+## 簡介
 
-* 一个支持无障碍服务的Android平台上的JavaScript 运行环境 和 开发环境，其发展目标是类似JsBox和Workflow。
+* 一個支持無障礙服務的Android平台上的JavaScript 運行環境 和 開發環境，其發展目標是類似JsBox和Workflow。
 
-* 本项目属于个人自用的增强版，目标在于满足个人日常使用开发需求，以及保证在新系统上APP的兼容性和稳定性。
+* 目前LZX284的[Auto.Js+](https://github.com/LZX284/Auto.Js)為主幹，並且在保證兼容性和穩定性上添加新功能，以滿足個人日常使用的開發需求。
 

@@ -8,15 +8,15 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface GithubUpdateCheckApi {
-    @GET("/repos/LZX284/Auto.Js/releases/latest")
+    @GET("/repos/jeromeleong/Auto.Js/releases/latest")
     @Headers("Cache-Control: no-cache")
     suspend fun getGithubLastReleaseInfo(): GithubReleaseInfo
 
-    @GET("/repos/LZX284/Auto.Js/releases/tags/{tag}")
+    @GET("/repos/jeromeleong/Auto.Js/releases/tags/{tag}")
     @Headers("Cache-Control: no-cache")
     suspend fun getGithubLastReleaseInfo(@Path("tag") tag: String): Response<GithubReleaseInfo>
 
-    @GET("/repos/LZX284/Auto.Js/releases")
+    @GET("/repos/jeromeleong/Auto.Js/releases")
     @Headers("Cache-Control: no-cache")
     suspend fun getGithubReleaseInfoList(): GithubReleaseInfoList
 }

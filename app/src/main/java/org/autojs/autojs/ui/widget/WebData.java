@@ -10,14 +10,14 @@ public class WebData {
             "https://github.com/search?q=auto+js+%E8%84%9A%E6%9C%AC&type=repositories",
             "http://mk.autoxjs.com/pages/controlMine/controlMine",
             "http://www.autoxjs.com/",
-            "https://github.com/LZX284/Auto.Js/issues"
+            "https://github.com/jeromeleong/Auto.Js/issues"
     };
     public String[] bookmarkLabels = new String[]{
-            "万花筒",
-            "脚本搜索",
-            "脚本市场",
-            "交流社区",
-            "问题反馈"
+            "萬花筒",
+            "腳本搜索",
+            "腳本市場",
+            "交流社區",
+            "問題反饋"
     };
     public String[] searchEngines = new String[]{
             "https://cn.bing.com/search?q=",
@@ -31,7 +31,7 @@ public class WebData {
             "https://www.ggssl.com/search?hl=zh-cn&ie=utf-8&q="
     };
     public String[] searchEngineLabels = new String[]{
-            "必应",
+            "必應",
             "Yandex",
             "百度",
             "搜狗",
@@ -53,10 +53,10 @@ public class WebData {
             "Mozilla/5.0 (Windows NT 10.0; WOW64), AppleWebKit/537.36 (KHTML, like Gecko), Chrome/99.0.3904.62 Safari/537.36"
     };
     public String[] userAgentLabels = new String[]{
-            "小米5X/UC浏览器",
-            "荣耀畅玩6X/QQ浏览器",
-            "华为P20 Pro/手机百度",
-            "华为Mate20/微信",
+            "小米5X/UC瀏覽器",
+            "榮耀暢玩6X/QQ瀏覽器",
+            "華為P20 Pro/手機百度",
+            "華為Mate20/微信",
             "iPhone/Safari",
             "iPhone/微信",
             "Mac OS X/Safari",

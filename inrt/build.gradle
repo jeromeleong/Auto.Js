@@ -70,7 +70,7 @@ android {
             // Specifies a list of ABIs that Gradle should create APKs for.
             // include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
 //            include 'armeabi-v7a'
-            include 'arm64-v8a'
+            include 'arm64-v8a','armeabi-v7a'
             // Specifies that we do not want to also generate a universal APK that includes all ABIs.
             universalApk false
         }
@@ -120,12 +120,14 @@ android {
         pickFirst 'lib/arm64-v8a/libhiai_ir_build.so'
         pickFirst 'lib/arm64-v8a/libNative.so'
         pickFirst 'lib/arm64-v8a/libpaddle_light_api_shared.so'
+        pickFirst 'lib/arm64-v8a/libpaddle_lite_jni.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libhiai.so'
         pickFirst 'lib/armeabi-v7a/libhiai_ir.so'
         pickFirst 'lib/armeabi-v7a/libhiai_ir_build.so'
         pickFirst 'lib/armeabi-v7a/libNative.so'
         pickFirst 'lib/armeabi-v7a/libpaddle_light_api_shared.so'
+        pickFirst 'lib/armeabi-v7a/libpaddle_lite_jni.so'
     }
 
 }
