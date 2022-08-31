@@ -42,9 +42,9 @@ class SplashActivity : ComponentActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (AccessibilityServiceTool.isAccessibilityServiceEnabled(this)) {
                 permissionsResult[Permissions.ACCESSIBILITY_SERVICES] = true
-                Toast.makeText(this, "无障碍服务已开启", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "無障礙服務已開啟", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "无障碍服务未开启", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "無障礙服務未開啟", Toast.LENGTH_SHORT).show()
             }
             checkSpecialPermissions()
         }
@@ -70,7 +70,7 @@ class SplashActivity : ComponentActivity() {
             if (result.all { it.value }) {
                 checkSpecialPermissions()
             } else {
-                GlobalAppContext.toast("请开启权限后，再运行!")
+                GlobalAppContext.toast("請開啟權限後，再運行!")
                 requestExternalStoragePermission()
             }
         }
@@ -157,8 +157,8 @@ class SplashActivity : ComponentActivity() {
 
     private fun requestDrawOverlays() {
         val dialog =
-            MaterialDialog.Builder(this).title("需要悬浮窗权限").content("需要悬浮窗权限")//内容
-                .positiveText("去打开") //肯定按键
+            MaterialDialog.Builder(this).title("需要懸浮窗權限").content("需要懸浮窗權限")//内容
+                .positiveText("去打開") //肯定按键
                 .negativeText("取消")
                 .onPositive { dialog, _ ->
                     dialog.dismiss()
@@ -173,9 +173,9 @@ class SplashActivity : ComponentActivity() {
 
     private fun requestBackgroundStart() {
         val dialog = MaterialDialog.Builder(this)
-            .title("需要后台打开界面权限")
-            .content("需要后台打开界面权限才能运行，请前往设置打开")
-            .positiveText("去打开") //肯定按键
+            .title("需要後台打開界面權限")
+            .content("需要後台打開界面權限才能運行，請前往設置打開")
+            .positiveText("去打開") //肯定按键
             .negativeText("取消")
             .onPositive { dialog, _ ->
                 dialog.dismiss()
@@ -193,7 +193,7 @@ class SplashActivity : ComponentActivity() {
         val dialog = MaterialDialog.Builder(this)
             .title(R.string.text_need_to_enable_accessibility_service)
             .content(R.string.explain_accessibility_permission, GlobalAppContext.appName)
-            .positiveText("去打开") //肯定按键
+            .positiveText("去打開") //肯定按键
             .negativeText("取消")
             .onPositive { dialog, _ ->
                 dialog.dismiss()

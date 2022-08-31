@@ -30,6 +30,9 @@ import com.stardust.autojs.core.ui.inflater.ImageLoader
 import com.stardust.autojs.core.ui.inflater.util.Drawables
 import com.stardust.autojs.execution.ScriptExecuteActivity
 
+// https://developers.google.com/android/reference/com/google/mlkit/common/MlKit
+import com.google.mlkit.common.MlKit
+
 
 /**
  * Created by Stardust on 2017/7/1.
@@ -41,6 +44,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         GlobalAppContext.set(this)
+        MlKit.initialize(this)
         Utils.init(this);
         AutoJs.initInstance(this)
         GlobalKeyObserver.init()

@@ -35,8 +35,7 @@ function captureAndOcr() {
     toastLog('截图失败')
   }
   let start = new Date()
-  //结果转数组：层级：3
-  result = mlkit.ocr(img,"zh").toArray(3);
+  result = mlkit.ocr(img,"zh");
   log(result);
   toastLog('耗时' + (new Date() - start) + 'ms')
   capturing = false
@@ -109,7 +108,7 @@ window.canvas.on('draw', function (canvas) {
   if (result && result.length > 0) {
     for (let i = 0; i < result.length; i++) {
       let ocrResult = result[i]
-      drawRectAndText(ocrResult.text + ' #信心:' + ocrResult.confidence.toFixed(2), ocrResult.bounds, '#00ff00', canvas, paint);
+      drawRectAndText(ocrResult.words + ' #信心:' + ocrResult.confidence.toFixed(2), ocrResult.bounds, '#00ff00', canvas, paint);
     }
   }
 })
@@ -122,7 +121,7 @@ events.on('exit', () => {
   img && img.recycle()
   // 撤销监听
   window.canvas.removeAllListeners()
-  
+
 })
 
 /**

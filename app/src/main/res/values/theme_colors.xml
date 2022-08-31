@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="theme_color_red">红色</string>
+    <string name="theme_color_red">紅色</string>
     <string name="theme_color_pink">粉色</string>
-    <string name="theme_color_purple">紫色</string>
+    <string name="theme_color_purple">透明主題</string>
     <string name="theme_color_dark_purple">深紫</string>
-    <string name="theme_color_indigo">靛蓝</string>
-    <string name="theme_color_blue">蓝色</string>
-    <string name="theme_color_light_blue">亮蓝</string>
-    <string name="theme_color_blue_green">蓝绿</string>
+    <string name="theme_color_indigo">靛藍</string>
+    <string name="theme_color_blue">藍色</string>
+    <string name="theme_color_light_blue">亮藍</string>
+    <string name="theme_color_blue_green">藍綠</string>
     <string name="theme_color_cyan">青色</string>
-    <string name="theme_color_green">绿色</string>
-    <string name="theme_color_light_green">亮绿</string>
-    <string name="theme_color_yellow_green">黄绿</string>
-    <string name="theme_color_yellow">黄色</string>
+    <string name="theme_color_green">綠色</string>
+    <string name="theme_color_light_green">亮綠</string>
+    <string name="theme_color_yellow_green">黃綠</string>
+    <string name="theme_color_yellow">黃色</string>
     <string name="theme_color_amber">琥珀</string>
     <string name="theme_color_orange">橙色</string>
     <string name="theme_color_dark_orange">深橙</string>
-    <string name="theme_color_brown">棕色</string>
+    <string name="theme_color_brown">顏色</string>
     <string name="theme_color_gray">灰色</string>
-    <string name="theme_color_blue_gray">蓝灰</string>
+    <string name="theme_color_blue_gray">藍灰</string>
 
 
     <color name="theme_color_red">#F44336</color>

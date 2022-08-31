@@ -26,36 +26,36 @@
         android:textSize="24dp"
         android:text="code：1233 \r\n imei:dddd \r\n z"
         />
+
     <Button
         android:id="@+id/regist"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="注册设备"
-        />
+        android:layout_marginTop="10dp"
+        android:text="註冊設備"
+        android:textSize="24dp" />
+
     <Button
         android:id="@+id/reconnect"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="重连服务器"
-        />
+        android:layout_marginTop="10dp"
+        android:text="重連服務器"
+        android:textSize="24dp" />
+
     <Button
         android:id="@+id/setting"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="打开无障碍服务"
-        />
+        android:layout_marginTop="10dp"
+        android:text="打開無障礙服務"
+        android:textSize="24dp" />
+
     <Button
         android:id="@+id/ykapp"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="独立运行"
-        />
+        android:layout_marginTop="10dp"
+        android:text="獨立運行"
+        android:textSize="24dp" />
 </LinearLayout>
