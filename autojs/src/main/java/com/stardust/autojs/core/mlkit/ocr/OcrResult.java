@@ -25,7 +25,4 @@ public class OcrResult {
         this.language = language;
     }
 
-    public OcrResult(String words) {
-        this.words = words;
-    }
 }
